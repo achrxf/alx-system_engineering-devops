@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(( BINARY #${1} ))
+echo "Base 10: (( 2#$BINARY ))

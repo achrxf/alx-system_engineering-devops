@@ -1,0 +1,73 @@
+Design of Web Infrastructure for www.foobar.com:
+
+User Access:
+
+A user types www.foobar.com into their web browser to access the website.
+Server:
+
+A single server with IP address 8.8.8.8 hosts the entire infrastructure.
+Domain Name:
+
+The domain name foobar.com is configured with a www record that points to the server's IP address (8.8.8.8). Domain names provide human-readable addresses for websites, translating them into IP addresses computers can understand.
+DNS Record:
+
+The DNS record for www.foobar.com is an A record, which maps a domain name to an IPv4 address.
+Web Server (Nginx):
+
+Nginx serves as the web server handling HTTP requests from clients. It receives requests from users' browsers and responds with static content or forwards dynamic requests to the application server.
+Application Server:
+
+The application server hosts the website's codebase. It processes dynamic content, executes application logic, and communicates with the database to retrieve or store data. In this setup, let's assume a framework like Django, Flask, or Ruby on Rails is deployed on this server.
+Database (MySQL):
+
+MySQL is the relational database management system used to store and manage website data. It stores information such as user accounts, content, configurations, etc. The application server communicates with the database to perform CRUD operations (Create, Read, Update, Delete).
+Communication with User's Computer:
+
+The server communicates with the user's computer over the Internet using the HTTP or HTTPS protocol. When a user requests a webpage, their browser sends an HTTP request to the server's IP address, and the server responds with the requested content.
+Issues with the Infrastructure:
+
+Single Point of Failure (SPOF):
+
+Since there's only one server handling all requests, if it goes down due to hardware failure, software issues, or maintenance, the entire website becomes inaccessible.
+Downtime during Maintenance:
+
+When maintenance tasks like deploying new code require restarting the web server, the website may experience downtime. During this period, users won't be able to access the site.
+Scalability Challenges:
+
+With only one server, the infrastructure cannot easily handle sudden spikes in traffic. If the incoming traffic exceeds the server's capacity, the website may become slow or unresponsive. Additionally, scaling horizontally (adding more servers) would require additional infrastructure setup and configuration for load balancing and redundancy.Design of Web Infrastructure for www.foobar.com:
+
+User Access:
+
+A user types www.foobar.com into their web browser to access the website.
+Server:
+
+A single server with IP address 8.8.8.8 hosts the entire infrastructure.
+Domain Name:
+
+The domain name foobar.com is configured with a www record that points to the server's IP address (8.8.8.8). Domain names provide human-readable addresses for websites, translating them into IP addresses computers can understand.
+DNS Record:
+
+The DNS record for www.foobar.com is an A record, which maps a domain name to an IPv4 address.
+Web Server (Nginx):
+
+Nginx serves as the web server handling HTTP requests from clients. It receives requests from users' browsers and responds with static content or forwards dynamic requests to the application server.
+Application Server:
+
+The application server hosts the website's codebase. It processes dynamic content, executes application logic, and communicates with the database to retrieve or store data. In this setup, let's assume a framework like Django, Flask, or Ruby on Rails is deployed on this server.
+Database (MySQL):
+
+MySQL is the relational database management system used to store and manage website data. It stores information such as user accounts, content, configurations, etc. The application server communicates with the database to perform CRUD operations (Create, Read, Update, Delete).
+Communication with User's Computer:
+
+The server communicates with the user's computer over the Internet using the HTTP or HTTPS protocol. When a user requests a webpage, their browser sends an HTTP request to the server's IP address, and the server responds with the requested content.
+Issues with the Infrastructure:
+
+Single Point of Failure (SPOF):
+
+Since there's only one server handling all requests, if it goes down due to hardware failure, software issues, or maintenance, the entire website becomes inaccessible.
+Downtime during Maintenance:
+
+When maintenance tasks like deploying new code require restarting the web server, the website may experience downtime. During this period, users won't be able to access the site.
+Scalability Challenges:
+
+With only one server, the infrastructure cannot easily handle sudden spikes in traffic. If the incoming traffic exceeds the server's capacity, the website may become slow or unresponsive. Additionally, scaling horizontally (adding more servers) would require additional infrastructure setup and configuration for load balancing and redundancy.

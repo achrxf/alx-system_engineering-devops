@@ -1,0 +1,54 @@
+ign of Secured and Monitored Three-Server Web Infrastructure for www.foobar.com:
+
+User Access:
+
+A user types www.foobar.com into their web browser to access the website.
+Firewalls:
+
+Each server is equipped with a firewall to control incoming and outgoing traffic, providing an additional layer of security. Firewalls filter network traffic based on predefined security rules, preventing unauthorized access and protecting against various cyber threats.
+SSL Certificate:
+
+An SSL certificate is installed on the load balancer to enable HTTPS encryption for traffic between clients and the servers. HTTPS ensures data integrity, confidentiality, and authentication, enhancing security by encrypting sensitive information transmitted over the network.
+Monitoring Clients:
+
+Each server is equipped with monitoring clients, such as data collectors for Sumo Logic or other monitoring services, to collect performance metrics, logs, and other relevant data. Monitoring helps track system health, detect anomalies, and troubleshoot issues proactively.
+Load Balancer with SSL Termination:
+
+The load balancer terminates SSL connections, decrypting HTTPS traffic before forwarding requests to backend servers. This allows for efficient handling of SSL encryption/decryption, offloading the computational overhead from backend servers.
+Web Server (Nginx):
+
+Nginx serves as the web server, handling HTTP requests and serving web content. It is configured to work seamlessly with the load balancer and SSL termination for secure communication with clients.
+Application Server:
+
+Hosts the website's codebase and processes dynamic content. Similar to the web server, it is configured to work in conjunction with the load balancer and SSL termination for secure communication.
+Database (MySQL):
+
+MySQL serves as the database management system for storing and managing website data. To enhance availability and fault tolerance, a MySQL cluster setup with multiple nodes capable of accepting writes is recommended.
+Specifics about the Infrastructure:
+
+Purpose of Firewalls:
+
+Firewalls are added to restrict access to the servers and protect them from unauthorized access, malicious attacks, and network-based threats.
+Reason for Serving Traffic over HTTPS:
+
+Traffic is served over HTTPS to encrypt data transmitted between clients and servers, preventing eavesdropping, tampering, and data breaches.
+Purpose of Monitoring:
+
+Monitoring is used to track system performance, detect anomalies, identify potential issues, and ensure the overall health and availability of the infrastructure.
+Data Collection by Monitoring Tool:
+
+The monitoring tool collects data by deploying agents or collectors on each server, which gather performance metrics, logs, and other relevant information. This data is then aggregated, analyzed, and visualized to provide insights into the system's health and performance.
+Monitoring Web Server QPS:
+
+To monitor the web server's QPS (Queries Per Second), you can configure the monitoring tool to collect and analyze metrics related to incoming HTTP requests, such as request count per second, response time, and server load.
+Issues with the Infrastructure:
+
+SSL Termination at Load Balancer Level:
+
+Terminating SSL at the load balancer level means that traffic between the load balancer and backend servers is transmitted in cleartext, potentially exposing sensitive information if the internal network is compromised.
+Single MySQL Server for Writes:
+
+Having only one MySQL server capable of accepting writes introduces a single point of failure. If the server fails, it could lead to data loss or service downtime.
+Uniform Components Across Servers:
+
+Deploying servers with identical components (database, web server, application server) may lead to uniform vulnerabilities and dependencies. A fault or security issue affecting one component could potentially impact all servers simultaneously. It's advisable to diversify components or employ additional security measures to mitigate this risk.

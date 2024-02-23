@@ -1,0 +1,48 @@
+ign of Three-Server Web Infrastructure for www.foobar.com:
+
+User Access:
+
+A user types www.foobar.com into their web browser to access the website.
+Server 1 (Primary Server):
+
+Hosts the primary components of the infrastructure, including the web server, application server, and database primary node.
+Server 2 (Replica Server):
+
+Acts as a backup to Server 1, hosting duplicate copies of the web server and application server, as well as the database replica node.
+Web Server (Nginx):
+
+Nginx serves as the primary web server handling HTTP requests. Adding redundancy ensures uninterrupted service in case of failure on one server.
+Application Server:
+
+Hosts the website's codebase, processing dynamic content. Having a backup application server ensures continuity of service if the primary server fails.
+Load Balancer (HAproxy):
+
+HAproxy distributes incoming traffic across multiple servers, ensuring efficient resource utilization and high availability. It is configured with a round-robin distribution algorithm to evenly distribute requests among servers.
+Database (MySQL):
+
+MySQL serves as the primary database management system. It employs a Primary-Replica (Master-Slave) cluster setup, where the primary node handles write operations while replica nodes replicate data from the primary node to handle read operations.
+Specifics about the Infrastructure:
+
+Load Balancer's Distribution Algorithm:
+
+The HAproxy load balancer is configured with a round-robin distribution algorithm. This algorithm cyclically distributes requests among available servers, ensuring each server gets an equal share of incoming traffic.
+Active-Active vs. Active-Passive Setup:
+
+The infrastructure is configured with an Active-Active setup, where both servers are actively serving requests simultaneously. In contrast, an Active-Passive setup would have one server actively serving requests while the other remains on standby, only taking over in case of failure.
+Primary-Replica Database Cluster:
+
+The primary node in the database cluster handles write operations, such as inserting, updating, or deleting data. The replica nodes asynchronously replicate data from the primary node to maintain a copy of the database. This setup ensures data redundancy and fault tolerance.
+Difference Between Primary and Replica Nodes:
+
+In regard to the application, the primary node handles all write operations, ensuring consistency in data modifications. The replica nodes primarily handle read operations, serving as backup data sources in case of primary node failure.
+Issues with the Infrastructure:
+
+Single Points of Failure (SPOF):
+
+Despite the redundancy in components, each server itself remains a single point of failure. If any server fails, it could disrupt the entire service.
+Security Issues:
+
+Lack of firewall configurations and HTTPS encryption leaves the infrastructure vulnerable to security threats like unauthorized access, data breaches, and interception of sensitive information.
+No Monitoring:
+
+Without monitoring tools in place, it's challenging to detect and address performance issues, resource bottlenecks, or potential failures in real-time, leading to potential downtime or degraded performance.
